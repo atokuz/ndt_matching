@@ -7,6 +7,32 @@
    1. Item 3b
 
 
+As Kanye West said:
+
+> We're living the future so
+> the present is our past.
+
+I think you should use an
+`<addr>` element here instead.
+
+
+```javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+```
+
+Some basic Git commands are:
+```
+git status
+git add
+git commit
+```
+
+
+
 1.I needed to be make some changes to CMakeLists.txt file
 
   1.PCL Library added
