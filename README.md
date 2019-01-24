@@ -12,7 +12,8 @@ ros2 run ndt_matching ndt_node
 ```
 
 
-I needed to make some changes to CMakeLists.txt file
+I needed to make some changes to CMakeLists.txt file.
+
 PCL Library added
 ```
 set(PCL_INCLUDE_DIRS /usr/include/pcl-1.8) 
