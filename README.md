@@ -1,43 +1,9 @@
 # 3D NDT Matching on ROS2
 
-1. Item 1
-1. Item 2
-1. Item 3
-   1. Item 3a
-   1. Item 3b
-
-
-As Kanye West said:
-
-> We're living the future so
-> the present is our past.
-
-I think you should use an
-`<addr>` element here instead.
-
-
-```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
-```
-
-Some basic Git commands are:
-```
-git status
-git add
-git commit
-```
-
-
-
-1.I needed to be make some changes to CMakeLists.txt file
-
-  1.PCL Library added
-  
-`set(PCL_INCLUDE_DIRS /usr/include/pcl-1.8) 
+1. I needed to be make some changes to CMakeLists.txt file
+   1. PCL Library added
+   ```
+set(PCL_INCLUDE_DIRS /usr/include/pcl-1.8) 
 
 target_include_directories(ndt_lib PUBLIC
   ${PCL_INCLUDE_DIRS}
@@ -48,16 +14,18 @@ target_include_directories(ndt_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
-target_link_libraries(ndt_node ndt_lib ${PCL_LIBRARIES})`
-
-  1.This was also missing in CMakeLists.txt
-  
-  `ament_target_dependencies(
+target_link_libraries(ndt_node ndt_lib ${PCL_LIBRARIES})
+```
+   1. This was also missing in CMakeLists.txt
+   ```
+ament_target_dependencies(
   ndt_lib
-  "rclcpp")`
-  
-  1.Extra files added for the library
-`set(srcs
+  "rclcpp"
+)
+```
+   1. Extra files added for the library
+   ```
+set(srcs
         src/ndt_lib.cpp
         src/VoxelGrid.cpp
         src/Octree.cpp
@@ -70,24 +38,22 @@ set(incs
         include/ndt_matching/VoxelGrid.h
         include/ndt_matching/Octree.h
         )
-add_library(ndt_lib ${incs} ${srcs})`
 
+add_library(ndt_lib ${incs} ${srcs})
+```
 1. I put some symlinks to /usr/local/include just for convenience
-
-`akif@akif-Aspire-5750:/usr/local/include$ ls -al
+```
+akif@akif-Aspire-5750:/usr/local/include$ ls -al
 total 8
 drwxr-xr-x  2 root root 4096 Jan 23 23:07 .
 drwxr-xr-x 10 root root 4096 Jul 25  2018 ..
 lrwxrwxrwx  1 root root   25 Jan 23 14:29 Eigen -> /usr/include/eigen3/Eigen
 lrwxrwxrwx  1 root root   24 Jan 23 03:24 pcl -> /usr/include/pcl-1.8/pcl
-lrwxrwxrwx  1 root root   31 Jan 23 23:07 unsupported -> /usr/include/eigen3/unsupported`
-
-1.To convert from PointCloud2 to PclCloud I was planning to use pcl_conversions
-But there are still some unresolved problems with it.
-(https://github.com/ros2/pcl_conversions/issues/3)
-
+lrwxrwxrwx  1 root root   31 Jan 23 23:07 unsupported -> /usr/include/eigen3/unsupported
+```
+1. To convert from PointCloud2 to PclCloud I was planning to use pcl_conversions
+But there are still some unresolved [problems](https://github.com/ros2/pcl_conversions/issues/3) with it.
 So instead I needed to use PointCloudIterator and copy points one by one.
-
 
 1.Most of the code has been adapted from PCL library.
 Also some parts of Autoware Lidar localizer code has been used.
