@@ -1,5 +1,17 @@
 # 3D NDT Matching on ROS2
 
+Instructions:
+
+```
+source /opt/ros/crystal/setup.bash
+git clone https://github.com/atokuz/ndt_matching.git
+cd ndt_matching/
+colcon build
+source install/local_setup.bash
+ros2 run ndt_matching ndt_node
+```
+
+
 I needed to make some changes to CMakeLists.txt file
 PCL Library added
 ```
