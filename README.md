@@ -65,14 +65,11 @@ lrwxrwxrwx  1 root root   24 Jan 23 03:24 pcl -> /usr/include/pcl-1.8/pcl
 lrwxrwxrwx  1 root root   31 Jan 23 23:07 unsupported -> /usr/include/eigen3/unsupported
 ```
 To convert from PointCloud2 to PclCloud I was planning to use pcl_conversions.
-
 But there are still some unresolved [problems](https://github.com/ros2/pcl_conversions/issues/3) with it.
-
 So instead I needed to use PointCloudIterator and copy points one by one.
 
 
 Most of the code has been adapted from PCL library.
-
 Also some parts of Autoware Lidar localizer code has been used.
 
 
